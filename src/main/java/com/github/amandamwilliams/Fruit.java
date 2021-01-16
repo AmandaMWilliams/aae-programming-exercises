@@ -44,4 +44,8 @@ public class Fruit {
     public void setCharacteristic2(String characteristic2) {
         this.characteristic2 = characteristic2;
     }
+
+    public String getString(Integer numberOfFruit) {
+        return String.format("%s %s: %s, %s", numberOfFruit, fruit, characteristic1, characteristic2);
+    }
 }
