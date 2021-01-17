@@ -2,7 +2,6 @@ package com.github.amandamwilliams;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Basket {
     private List<Fruit> fruitList;
@@ -15,20 +14,20 @@ public class Basket {
         this.fruitList = new ArrayList<>();
     }
 
-    public void addFruit(Fruit fruit){
+    public void addFruit(Fruit fruit) {
         fruitList.add(fruit);
     }
 
-    public Integer getTotalFruitCount(){
+    public Integer getTotalFruitCount() {
         return fruitList.size();
     }
 
     public List<String> getTypesOfFruit() {
         List<String> list = new ArrayList<>();
-        for(Fruit fruit : this.fruitList) {
+        for (Fruit fruit : this.fruitList) {
             String typeOfFruit = fruit.getFruit();
             boolean alreadyContainsFruit = list.contains(typeOfFruit);
-            if(!alreadyContainsFruit) {
+            if (!alreadyContainsFruit) {
                 list.add(typeOfFruit);
             }
         }
@@ -37,14 +36,13 @@ public class Basket {
 
     public List<Fruit> getFruitsByType(String fruitType) {
         List<Fruit> result = new ArrayList<>();
-        for(Fruit fruit : fruitList) {
-            if(fruit.getFruit().equalsIgnoreCase(fruitType)) {
+        for (Fruit fruit : fruitList) {
+            if (fruit.getFruit().equalsIgnoreCase(fruitType)) {
                 result.add(fruit);
             }
         }
-        return  result;
+        return result;
     }
-
 
     public String getCharacteristicsOfFruit(String fruitType) {
         List<Fruit> fruitList = getFruitsByType(fruitType);
@@ -55,7 +53,7 @@ public class Basket {
 
     public List<String> getCharacteristicsOfEachFruit() {
         List<String> result = new ArrayList<>();
-        for(String fruitType : getTypesOfFruit()) {
+        for (String fruitType : getTypesOfFruit()) {
             result.add(getCharacteristicsOfFruit(fruitType));
         }
         return result;
@@ -63,13 +61,12 @@ public class Basket {
 
     public List<Fruit> getFruitOlderThan(Integer numberOfDays) {
         List<Fruit> result = new ArrayList<>();
-        for(Fruit fruit : fruitList) {
+        for (Fruit fruit : fruitList) {
             Integer daysInBasket = fruit.getDays();
-            if(daysInBasket >= numberOfDays) {
+            if (daysInBasket >= numberOfDays) {
                 result.add(fruit);
             }
         }
         return result;
     }
-
 }
