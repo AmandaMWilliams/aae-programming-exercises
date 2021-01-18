@@ -1,7 +1,9 @@
 package com.github.amandamwilliams;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Basket {
     private List<Fruit> fruitList;
@@ -68,5 +70,17 @@ public class Basket {
             }
         }
         return result;
+    }
+
+    public Map<String, Integer> getNumberOfOccurrencesOfEachFruit(){
+        Map<String, Integer> numberOfOccurrenceMap = new HashMap<>();
+        String fruitName = "";
+        Integer numberOfFruit = 0;
+        for (Fruit fruit : fruitList) {
+            fruitName = fruit.toString();
+        }
+        numberOfOccurrenceMap.put(fruitName, numberOfFruit);
+        return numberOfOccurrenceMap;
+
     }
 }

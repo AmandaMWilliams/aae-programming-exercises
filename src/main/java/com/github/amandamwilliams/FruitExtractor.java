@@ -54,16 +54,10 @@ public class FruitExtractor {
         StringBuilder result = new StringBuilder();
         Basket basket = getBasket();
         List<String> typesOfFruit = basket.getTypesOfFruit();
-        Collections.sort(typesOfFruit);
-        for (String currentFruitType : typesOfFruit) {
-            List<Fruit> fruitsOfCurrentType = basket.getFruitsByType(currentFruitType);
-            result
-                    .append(currentFruitType)
-                    .append(": ")
-                    .append(fruitsOfCurrentType.size())
-                    .append("\n");
-        }
-        System.out.println(result.toString());
+        //count number of occurrences of each FruitType
+        //arrange typesOfFruit by number of occurrences, not name of Fruit
+        //print in order from most to least
+
     }
 
     public void printCharacteristicsOfEachFruitByType() {
