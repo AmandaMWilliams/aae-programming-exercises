@@ -1,6 +1,7 @@
 package com.github.amandamwilliams;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,5 +35,83 @@ public class FruitExtractor {
         return new Basket(extractAllFruit());
     }
 
+    public void printTotalNumberOfFruit(){
+        Integer totalNumberOfFruit = getBasket().getTotalFruitCount();
+        String prefix = "Total number of fruit: ";
+        String output = prefix + totalNumberOfFruit;
+        System.out.println(output);
+    }
+
+    public void printNumberOfTypesOfFruit() {
+        Integer totalNumberOfFruit = getBasket().getTypesOfFruit().size();
+        String prefix = "Types of fruit: ";
+        String output = prefix + totalNumberOfFruit;
+        System.out.println(output);
+    }
+
+
+    public void printNumberOfEachTypeOfFruitInDescendingOrder() {
+        StringBuilder result = new StringBuilder();
+        Basket basket = getBasket();
+        List<String> typesOfFruit = basket.getTypesOfFruit();
+        Collections.sort(typesOfFruit);
+        for (String currentFruitType : typesOfFruit) {
+            List<Fruit> fruitsOfCurrentType = basket.getFruitsByType(currentFruitType);
+            result
+                    .append(currentFruitType)
+                    .append(": ")
+                    .append(fruitsOfCurrentType.size())
+                    .append("\n");
+        }
+        System.out.println(result.toString());
+    }
+
+    public void printCharacteristicsOfEachFruitByType() {
+        StringBuilder result = new StringBuilder();
+        Basket basket = getBasket();
+        List<String> typesOfFruit = basket.getTypesOfFruit();
+        Collections.sort(typesOfFruit);
+        for (String currentFruitType : typesOfFruit) {
+            List<Fruit> fruitsOfCurrentType = basket.getFruitsByType(currentFruitType);
+            Integer numberOfFruitOfCurrentType = fruitsOfCurrentType.size();
+            Fruit instanceOfCurrentFruit = fruitsOfCurrentType.get(0);
+            String characteristic1 = instanceOfCurrentFruit.getCharacteristic1();
+            String characteristic2 = instanceOfCurrentFruit.getCharacteristic2();
+            result
+                    .append(numberOfFruitOfCurrentType)
+                    .append(" ")
+                    .append(currentFruitType)
+                    .append(": ")
+                    .append(characteristic1)
+                    .append(", ")
+                    .append(characteristic2)
+                    .append("\n");
+        }
+
+        String output = result
+                .toString()
+                .replaceAll("\n$", "");
+
+        System.out.println(output);
+    }
+
+    public void printAllFruitOlderThan(Integer numberOfDays) {
+        StringBuilder result = new StringBuilder();
+        Basket basket = getBasket();
+        List<Fruit> oldFruitList = basket.getFruitOlderThan(numberOfDays);
+        Basket oldFruitBasket = new Basket(oldFruitList);
+        List<String> oldFruitTypes = oldFruitBasket.getTypesOfFruit();
+
+        for(String currentFruitType : oldFruitTypes) {
+            List<Fruit> currentFruitTypeList =  getBasket().getFruitsByType(currentFruitType);
+            Fruit currentFruitTypeInstance =  currentFruitTypeList.get(0);
+            Integer numberOfFruit = currentFruitTypeList.size();
+            String currentFruitTypeInfo = currentFruitTypeInstance.getString(numberOfFruit);
+            result.append(currentFruitTypeInfo + "\n");
+        }
+
+        result.append("The following is a list of the fruit older than " + numberOfDays);
+        System.out.println(result.toString());
+    }
 
 }
