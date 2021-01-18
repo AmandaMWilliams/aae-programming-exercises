@@ -17,7 +17,7 @@ public class FruitExtractor {
     public List<Fruit> extractAllFruit() {
         List<Fruit> result = new ArrayList<>();
         String[] csvFileLines = reader.getLines();
-        for (int i = 0; i < csvFileLines.length; i++) {
+        for (int i = 1; i < csvFileLines.length; i++) {
             String csvFileLine = csvFileLines[i]; //apple,1, red, sweet
             String[] fields = csvFileLine.split(",");
             String fruitName = fields[0];
@@ -101,17 +101,21 @@ public class FruitExtractor {
         List<Fruit> oldFruitList = basket.getFruitOlderThan(numberOfDays);
         Basket oldFruitBasket = new Basket(oldFruitList);
         List<String> oldFruitTypes = oldFruitBasket.getTypesOfFruit();
-
-        for(String currentFruitType : oldFruitTypes) {
-            List<Fruit> currentFruitTypeList =  getBasket().getFruitsByType(currentFruitType);
-            Fruit currentFruitTypeInstance =  currentFruitTypeList.get(0);
-            Integer numberOfFruit = currentFruitTypeList.size();
-            String currentFruitTypeInfo = currentFruitTypeInstance.getString(numberOfFruit);
-            result.append(currentFruitTypeInfo + "\n");
+        result.append("The following is a list of the fruit older than " + numberOfDays + ": \n");
+        for (String oldFruitType : oldFruitTypes) {
+            List<Fruit> currentOldFruitTypeInstancesList = oldFruitBasket.getFruitsByType(oldFruitType);
+            Integer numberOfOldFruitOfCurrentType = currentOldFruitTypeInstancesList.size();
+            result.append(numberOfOldFruitOfCurrentType);
+            result.append(" ");
+            result.append(oldFruitType);
+            result.append(" and ");
         }
 
-        result.append("The following is a list of the fruit older than " + numberOfDays);
-        System.out.println(result.toString());
+        String output = result
+                .toString()
+                .replaceAll("and $", "");
+
+        System.out.println(output);
     }
 
 }

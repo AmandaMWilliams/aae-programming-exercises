@@ -48,4 +48,14 @@ public class Fruit {
     public String getString(Integer numberOfFruit) {
         return String.format("%s %s: %s, %s", numberOfFruit, fruit, characteristic1, characteristic2);
     }
+
+    @Override
+    public String toString() {
+        return "Fruit{" +
+                "fruit='" + fruit + '\'' +
+                ", days=" + days +
+                ", characteristic1='" + characteristic1 + '\'' +
+                ", characteristic2='" + characteristic2 + '\'' +
+                '}';
+    }
 }

@@ -2,11 +2,10 @@ package com.github.amandamwilliams;
 
 public class MainApplication {
     public static void main(String[] args) {
-        String firstCommandLineArgument = args[0];
-        Boolean hasClientPassedInCommandLineArgument = firstCommandLineArgument != null;
+        Boolean hasClientPassedInCommandLineArgument = args.length > 0;
         ApplicationMenu applicationMenu;
         if(hasClientPassedInCommandLineArgument) {
-            applicationMenu = new ApplicationMenu(firstCommandLineArgument);
+            applicationMenu = new ApplicationMenu(args[0]);
         } else {
             applicationMenu = new ApplicationMenu();
         }
