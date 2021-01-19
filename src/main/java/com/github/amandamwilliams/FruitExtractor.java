@@ -1,6 +1,7 @@
 package com.github.amandamwilliams;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Extracts fruit from CSVReader and injects them into the Basket
@@ -52,7 +53,8 @@ public class FruitExtractor {
         StringBuilder result = new StringBuilder();
         Basket basket = getBasket();
         List<String> typesOfFruit = basket.getTypesOfFruit();
-        System.out.println(basket.getNumberOfOccurrencesOfEachFruit());
+
+        System.out.println(basket.getNumberOfOccurrencesOfEachFruit(typesOfFruit));
 
         //Convert typesOfFruit to map
 //        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();

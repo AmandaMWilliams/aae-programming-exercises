@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Basket {
     private List<Fruit> fruitList;
@@ -72,7 +73,7 @@ public class Basket {
         return result;
     }
 
-    public Map<String, Integer> getNumberOfOccurrencesOfEachFruit(){
+    public Map<String, Integer> getNumberOfOccurrencesOfEachFruit(List<String> typesOfFruit){
         Map<String, Integer> numberOfOccurrenceMap = new HashMap<>();
         String fruitName = "";
         Integer numberOfFruit = 0;
