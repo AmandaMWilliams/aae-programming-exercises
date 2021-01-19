@@ -77,9 +77,11 @@ public class Basket {
         String fruitName = "";
         Integer numberOfFruit = 0;
         for (Fruit fruit : fruitList) {
-            fruitName = fruit.toString();
+            fruitName = getTypesOfFruit().toString();
+            numberOfFruit++;
+           // numberOfFruit = getFruitsByType(fruitName).size();
+            numberOfOccurrenceMap.put(fruitName, numberOfFruit);
         }
-        numberOfOccurrenceMap.put(fruitName, numberOfFruit);
         return numberOfOccurrenceMap;
 
     }

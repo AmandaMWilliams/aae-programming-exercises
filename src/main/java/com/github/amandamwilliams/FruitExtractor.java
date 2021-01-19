@@ -1,8 +1,6 @@
 package com.github.amandamwilliams;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Extracts fruit from CSVReader and injects them into the Basket
@@ -54,10 +52,18 @@ public class FruitExtractor {
         StringBuilder result = new StringBuilder();
         Basket basket = getBasket();
         List<String> typesOfFruit = basket.getTypesOfFruit();
-        //count number of occurrences of each FruitType
-        //arrange typesOfFruit by number of occurrences, not name of Fruit
-        //print in order from most to least
+        System.out.println(basket.getNumberOfOccurrencesOfEachFruit());
 
+        //Convert typesOfFruit to map
+//        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
+//
+//        typesOfFruit.entrySet()
+//                .stream()
+//                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+//                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+//        result
+//                .append("The following is the numof of each type of fruit in descending order:\n")
+//                .append(result);
     }
 
     public void printCharacteristicsOfEachFruitByType() {
